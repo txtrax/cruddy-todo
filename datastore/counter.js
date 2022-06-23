@@ -24,14 +24,10 @@ const readCounter = (callback) => {
     if (err) {
       callback(null, 0);
     } else {
-      console.log("in read = ", Number(fileData));
       callback(null, Number(fileData));
     }
   });
 };
-//00001
-//00002
-//00003
 
 //input: integer, callback
 //output: integer sting with padding
@@ -41,7 +37,6 @@ const writeCounter = (count, callback) => {
     if (err) {
       throw ('error writing counter');
     } else {
-      console.log("in write = ", count);
       callback(null, counterString);
     }
   });
@@ -52,18 +47,14 @@ const writeCounter = (count, callback) => {
 //input: callback
 //output:
 exports.getNextUniqueId = (callback) => {
-  //readcounter
-  //callback :
   readCounter((err, num) => { //read the current count
-    // writeCounter(num + 1, (err, stringNum) => {
-    //   callback(null, stringNum);
-    // })
     if (err) {
-      console.log(err);
+      throw ('error getting ID');
     } else {
-      writeCounter(num, (err, stringNum) => {
+      //success block
+      writeCounter(num + 1, (err, stringNum) => {
         if (err) {
-          console.log(err);
+          console.log('error padding the number');
         } else {
           //once youre done creating a count
           callback(null, stringNum);
