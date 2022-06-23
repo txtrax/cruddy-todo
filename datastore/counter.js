@@ -53,12 +53,12 @@ const writeCounter = (count, callback) => {
 //output:
 exports.getNextUniqueId = (callback) => {
   //readcounter
-    //callback :
+  //callback :
   readCounter((err, num) => { //read the current count
     // writeCounter(num + 1, (err, stringNum) => {
     //   callback(null, stringNum);
     // })
-    if(err){
+    if (err) {
       console.log(err);
     } else {
       writeCounter(num, (err, stringNum) => {
@@ -68,9 +68,9 @@ exports.getNextUniqueId = (callback) => {
           //once youre done creating a count
           callback(null, stringNum);
         }
-      })
+      });
     }
-  })
+  });
   // counter = counter + 1;
   // return zeroPaddedNumber(counter);
 };
